@@ -12,10 +12,7 @@ const Footer = () => {
                             <a href="#">Contacts</a>
                         </li>
                         <li>
-                            <a href="#">Recess rights</a>
-                        </li>
-                        <li>
-                            <a href="#">Sell condition</a>
+                            <a href="#">Terms & Condition</a>
                         </li>
                         <li>
                             <a href="#">Compliance & Whistleblowing</a>
