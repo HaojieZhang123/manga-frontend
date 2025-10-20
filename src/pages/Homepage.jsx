@@ -1,6 +1,9 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -35,7 +38,34 @@ const Homepage = () => {
                     <div className="col-12">
                         <div className="jumbotron mt-4">
                             <h1 className="display-4">Welcome to the Manga Homepage!</h1>
-                            <p className="lead">Discover a world of manga at your fingertips.</p>
+
+                            <Swiper
+                                spaceBetween={50}
+                                slidesPerView={1}
+                                autoplay={{ delay: 3000 }}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                modules={[Autoplay, Pagination]}
+                                loop={true}
+                                onSwiper={(swiper) => console.log(swiper)}
+                            >
+                                <SwiperSlide>
+                                    <div className="col-12 d-flex justify-content-center">
+                                        <img src="https://www.pixartprinting.it/blog/wp-content/uploads/2021/04/IMMAGINE-2.jpg" className="img-fluid" alt="Banner 1" />
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="col-12 d-flex justify-content-center">
+                                        <img src="https://imgproxy.domestika.org/unsafe/w:1200/rs:fill/plain/src://blog-post-open-graph-covers/000/008/954/8954-original.png?1633462854" className="img-fluid" alt="Banner 2" />
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="col-12 d-flex justify-content-center">
+                                        <img src="https://www.quotidiano.net/image-service/view/acePublic/alias/contentid/MDM0NTI4YmUtNWFmMi00/0/1663397817-manga.webp" className="img-fluid" alt="Banner 3" />
+                                    </div>
+                                </SwiperSlide>
+                            </Swiper>
                         </div>
                     </div>
 
