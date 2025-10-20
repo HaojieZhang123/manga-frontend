@@ -35,23 +35,38 @@ const DetailsPage = () => {
                     <div className="col-12">
                         {mangaDetails ? (
                             <div className="card my-4">
-                                <div className="card-body">
-                                    <h2 className="card-title mb-3">{mangaDetails.title}</h2>
-                                    <h5 className="card-subtitle mb-3 text-muted">
-                                        Authors: {mangaDetails.authors.map((author) => author.name).join(', ')}
-                                    </h5>
-                                    <h5 className="card-subtitle mb-3 text-muted">
-                                        Genres: {mangaDetails.genres.map((genre) => genre.name).join(', ')}
-                                    </h5>
 
-                                    <h6 className="card-subtitle mb-3 text-muted">
-                                        Published: {new Date(mangaDetails.releaseDate).toLocaleDateString()}
-                                    </h6>
-                                    <p className="card-text">{mangaDetails.description}</p>
-                                    <p className="card-text">
-                                        Status: <span className="badge text-bg-info">{mangaDetails.status.name}</span>
-                                    </p>
+                                <div className="row g-0">
+                                    <div className="col-md-4">
+                                        <img src={mangaDetails.coverImage} className="img-fluid rounded-start" alt="Image" />
+                                    </div>
+
+                                    <div className="col-md-8">
+                                        <div className="card-body">
+                                            <h2 className="card-title mb-3">{mangaDetails.title}</h2>
+                                            <h5 className="card-subtitle mb-3 text-muted">
+                                                Authors: {mangaDetails.authors.map((author) => author.name).join(', ')}
+                                            </h5>
+                                            <h5 className="card-subtitle mb-3 text-muted">
+                                                Genres: {mangaDetails.genres.map((genre) => genre.name).join(', ')}
+                                            </h5>
+
+                                            <h6 className="card-subtitle mb-3 text-muted">
+                                                Published: {new Date(mangaDetails.releaseDate).toLocaleDateString()}
+                                            </h6>
+                                            <p className="card-text">{mangaDetails.description}</p>
+                                            <p className="card-text">
+                                                Status:
+                                                {/* green if Ongoing, blue if Completed, red if Cancelled, yellow if Hiatus */}
+                                                {mangaDetails.status.name === 'Ongoing' && <span className='badge text-bg-success mx-2'>{mangaDetails.status.name}</span>}
+                                                {mangaDetails.status.name === 'Completed' && <span className='badge text-bg-info mx-2'>{mangaDetails.status.name}</span>}
+                                                {mangaDetails.status.name === 'Cancelled' && <span className='badge text-bg-danger mx-2'>{mangaDetails.status.name}</span>}
+                                                {mangaDetails.status.name === 'Hiatus' && <span className='badge text-bg-warning mx-2'>{mangaDetails.status.name}</span>}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                         ) : (
                             <p>Loading manga details...</p>
